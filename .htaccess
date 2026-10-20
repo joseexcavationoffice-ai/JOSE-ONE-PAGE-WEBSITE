@@ -2,6 +2,9 @@
 
 Options -Indexes
 
+# Git deploys can leave the repo folder on the server: never serve it
+RedirectMatch 404 /\.git
+
 # API keys and the example file are never served
 <FilesMatch "^config(\.example)?\.php$">
   Require all denied
