@@ -1,0 +1,54 @@
+# Apache (most shared hosts). Netlify / Cloudflare Pages read _headers and _redirects instead.
+
+Options -Indexes
+
+# API keys and the example file are never served
+<FilesMatch "^config(\.example)?\.php$">
+  Require all denied
+</FilesMatch>
+ErrorDocument 404 /404.html
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # one canonical host: https, no www
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://joseexcavation.com%{REQUEST_URI} [L,R=301]
+  # /index.html and /folder/index.html -> clean URL (only on direct requests, not the DirectoryIndex lookup)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^ /%1 [L,R=301]
+  # folder URLs always end in a slash (/privacy -> /privacy/)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType video/mp4 .mp4
+  AddType application/manifest+json .webmanifest
+  AddType text/javascript .js .mjs
+  AddCharset utf-8 .html .css .js .txt .xml .webmanifest
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json application/manifest+json image/svg+xml text/plain text/xml application/xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  # long cache for images and fonts; HTML always revalidates; CSS/JS for a day (no file hashing yet)
+  <FilesMatch "\.(webp|jpe?g|png|svg|ico|woff2?|mp4)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

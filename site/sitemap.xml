@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://joseexcavation.com/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://joseexcavation.com/img/excavator-bulk-excavation.jpg</image:loc></image:image>
+    <image:image><image:loc>https://joseexcavation.com/img/poured-footings-vertical-rebar.jpg</image:loc></image:image>
+    <image:image><image:loc>https://joseexcavation.com/img/basement-foundation-forms-excavation.jpg</image:loc></image:image>
+    <image:image><image:loc>https://joseexcavation.com/img/concrete-pump-foundation-pour-crew.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://joseexcavation.com/estimate/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://joseexcavation.com/privacy/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://joseexcavation.com/terms/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+</urlset>

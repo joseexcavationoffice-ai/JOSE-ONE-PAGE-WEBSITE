@@ -1,0 +1,4 @@
+# Netlify / Cloudflare Pages: one canonical host
+https://www.joseexcavation.com/*  https://joseexcavation.com/:splat  301!
+http://www.joseexcavation.com/*   https://joseexcavation.com/:splat  301!
+http://joseexcavation.com/*       https://joseexcavation.com/:splat  301!

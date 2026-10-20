@@ -1,0 +1,7 @@
+# joseexcavation.com
+User-agent: *
+Allow: /
+# /thanks/ stays crawlable so Google can read its noindex
+Disallow: /api/
+
+Sitemap: https://joseexcavation.com/sitemap.xml

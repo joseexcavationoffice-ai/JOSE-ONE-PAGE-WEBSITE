@@ -1,0 +1,17 @@
+# private project notes (client address, answers, review reports)
+.claude/
+
+# raw client material
+*.zip
+ONE PAGE - JOSE EXCAVATION.md
+
+# server secrets and runtime cache
+site/api/config.php
+site/api/cache/*
+!site/api/cache/.htaccess
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
